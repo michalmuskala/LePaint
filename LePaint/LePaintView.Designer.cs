@@ -1,6 +1,6 @@
 ﻿namespace LePaint
 {
-    partial class Form1
+    partial class LePaintView
     {
         /// <summary>
         /// Required designer variable.
