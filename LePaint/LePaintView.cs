@@ -14,6 +14,7 @@ namespace LePaint
     {
         public LePaintView()
         {
+            MessageBox.Show("Test");
             InitializeComponent();
         }
     }
