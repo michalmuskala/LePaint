@@ -55,9 +55,21 @@
     <Compile Include="LePaintView.Designer.cs">
       <DependentUpon>LePaintView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Plotno.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Plotno.Designer.cs">
+      <DependentUpon>Plotno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\ISettings.cs" />
+    <EmbeddedResource Include="LePaintView.resx">
+      <DependentUpon>LePaintView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plotno.resx">
+      <DependentUpon>Plotno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
