@@ -81,7 +81,6 @@
             this.plotno1.MaximumSize = new System.Drawing.Size(700, 700);
             this.plotno1.MinimumSize = new System.Drawing.Size(700, 700);
             this.plotno1.Name = "plotno1";
-            this.plotno1.PenColor = System.Drawing.Color.Empty;
             this.plotno1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.plotno1.Size = new System.Drawing.Size(700, 700);
             this.plotno1.TabIndex = 0;
