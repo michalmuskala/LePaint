@@ -32,16 +32,17 @@
             // 
             // Plotno
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.Margin = new System.Windows.Forms.Padding(50, 3, 3, 3);
-            this.MaximumSize = new System.Drawing.Size(700, 700);
-            this.MinimumSize = new System.Drawing.Size(700, 700);
+            this.Margin = new System.Windows.Forms.Padding(40, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(560, 560);
+            this.MinimumSize = new System.Drawing.Size(560, 560);
             this.Name = "Plotno";
-            this.Size = new System.Drawing.Size(700, 700);
+            this.Size = new System.Drawing.Size(560, 560);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Plotno_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Plotno_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Plotno_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Plotno_MouseUp);

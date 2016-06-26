@@ -7,69 +7,76 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LePaint.Objects;
 
 namespace LePaint
 {
     public partial class Plotno : UserControl
     {
-        Graphics graphics;
-        Pen pen = new Pen(Color.Black, 1);
-        Point sp = new Point(0, 0);
-        Point ep = new Point(0, 0);
-        int k = 0;
-        Color penColor;
-        public Plotno()
+        private const int throtlingFactor = 2;
+
+        private IList<Point> path = new List<Point>();
+        private IEnumerable<IObject> nextObjects = new List<IObject>();
+        private Graphics graphics;
+        private bool mouseDown = false;
+        private int throtleCounter = 0;
+
+        public Action<IEnumerable<Point>> PathUpdated;
+        public Action Commit;
+
+        public IEnumerable<IObject> NextObjects
         {
-            pen.Color = Color.Black;
-            InitializeComponent();
+            set
+            {
+                nextObjects = value;
+                Refresh();
+            }
         }
 
-        public Color PenColor
+        public Plotno()
         {
-            get
-            {
-                return penColor;
-            }
-            set
-            {
-                penColor = value;
-                pen.Color = value;
-            }
+            InitializeComponent();
+            this.graphics = CreateGraphics();
         }
-        public int PenSize
-        {
-            set
-            {
-                pen.Width = value;
-            }
-        }
+
         private void Plotno_MouseDown(object sender, MouseEventArgs e)
         {
-            sp = e.Location;
-            if (e.Button == MouseButtons.Left)
-            {
-                k = 1;
-            }
+            path.Add(e.Location);
+            mouseDown = true;
+        }
+        private void Plotno_MouseUp(object sender, MouseEventArgs e)
+        {
+            PathUpdated(path);
+            Commit();
+            path = new List<Point>();
+            mouseDown = false;
         }
 
         private void Plotno_MouseMove(object sender, MouseEventArgs e)
         {
-            if (k == 1)
+            if (!mouseDown)
             {
-                ep = e.Location;
-                graphics = this.CreateGraphics();
-                graphics.DrawLine(pen, sp, ep);
-                graphics.DrawLine(pen, sp, ep);
-
+                return;
             }
-            sp = ep;
 
-            
+            if (throtleCounter > throtlingFactor)
+            {
+                path.Add(e.Location);
+                PathUpdated(path);
+                throtleCounter = 0;
+            }
+            else
+            {
+                throtleCounter++;
+            }
         }
 
-        private void Plotno_MouseUp(object sender, MouseEventArgs e)
+        private void Plotno_Paint(object sender, PaintEventArgs e)
         {
-            k = 0;
+            foreach (var ob in nextObjects)
+            {
+                ob.Draw(graphics);
+            }
         }
     }
 }
