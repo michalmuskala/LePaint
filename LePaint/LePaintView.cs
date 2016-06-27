@@ -205,5 +205,23 @@ namespace LePaint
                 });
             }
         }
+
+        private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String openedFilePath;
+            String fileName;
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "JPG|*.jpg|PNG|*.png|BMP|*.bmp";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                fileName = dialog.FileName;
+                if (fileName.Remove(0, (fileName.LastIndexOf(".") + 1)) != "jpg" && fileName.Remove(0, (fileName.LastIndexOf(".") + 1)) != "png" && fileName.Remove(0, (fileName.LastIndexOf(".") + 1)) != "bmp")
+                {
+                    MessageBox.Show(fileName.Remove(0, (fileName.LastIndexOf(".")+1)));
+                }
+                openedFilePath = dialog.SafeFileName;
+            }
+            
+        }
     }
 }

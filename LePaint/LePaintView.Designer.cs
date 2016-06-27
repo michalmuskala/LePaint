@@ -43,7 +43,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otwórzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszJakoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -210,35 +209,28 @@
             // 
             // nowyToolStripMenuItem
             // 
-            this.nowyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xToolStripMenuItem});
             this.nowyToolStripMenuItem.Name = "nowyToolStripMenuItem";
-            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.nowyToolStripMenuItem.Text = "Nowy";
             this.nowyToolStripMenuItem.Click += new System.EventHandler(this.nowyToolStripMenuItem_Click);
-            // 
-            // xToolStripMenuItem
-            // 
-            this.xToolStripMenuItem.Name = "xToolStripMenuItem";
-            this.xToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
-            this.xToolStripMenuItem.Text = "600 x ";
             // 
             // otwórzToolStripMenuItem
             // 
             this.otwórzToolStripMenuItem.Name = "otwórzToolStripMenuItem";
-            this.otwórzToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.otwórzToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.otwórzToolStripMenuItem.Text = "Otwórz";
+            this.otwórzToolStripMenuItem.Click += new System.EventHandler(this.otwórzToolStripMenuItem_Click);
             // 
             // zapiszToolStripMenuItem
             // 
             this.zapiszToolStripMenuItem.Name = "zapiszToolStripMenuItem";
-            this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.zapiszToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.zapiszToolStripMenuItem.Text = "Zapisz";
             // 
             // zapiszJakoToolStripMenuItem
             // 
             this.zapiszJakoToolStripMenuItem.Name = "zapiszJakoToolStripMenuItem";
-            this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";
             // 
             // LePaintView
@@ -285,7 +277,6 @@
         private System.Windows.Forms.ToolStripMenuItem otwórzToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zapiszToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zapiszJakoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem xToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label gumka;
         private System.Windows.Forms.PictureBox pictureBox1;
