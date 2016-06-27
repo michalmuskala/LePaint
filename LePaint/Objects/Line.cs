@@ -13,15 +13,25 @@ namespace LePaint.Objects
  
         public Line(Pen pen, IList<Point> points, string option)
         {
-            this.pen = pen;
-            var convertedOption = PathPointType.Line; // TODO: convert from option
-            var pointTypes = points.Select(_ => (byte)convertedOption).ToArray();
-            this.path = new GraphicsPath(points.ToArray(), pointTypes);
+            if (points.Count == 0)
+            {
+                this.path = null;
+            }
+            else
+            {
+                this.pen = pen;
+                var convertedOption = PathPointType.Line; // TODO: convert from option
+                var pointTypes = points.Select(_ => (byte)convertedOption).ToArray();
+                this.path = new GraphicsPath(points.ToArray(), pointTypes);
+            }
         }
 
         public void Draw(Graphics graphics)
         {
-            graphics.DrawPath(pen, path);
+            if (path != null)
+            {
+                graphics.DrawPath(pen, path);
+            }
         }
     }
 }
