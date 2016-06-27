@@ -130,6 +130,34 @@ namespace LePaint
         private void plotno1_Load_2(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //int newWidth = 500;
+            //plotno1.MaximumSize = new Size(newWidth, plotno1.Height);
+            //plotno1.Size = new Size(newWidth, plotno1.Height);
+            plotno1.SuspendLayout();
+            
+            int tempWidth = Int32.Parse(textBox1.Text);
+            int tempHeight = Int32.Parse(textBox2.Text);
+            if ((tempWidth > 100 && tempHeight > 100) && (tempHeight < 2000 && tempWidth < 2000))
+            {
+                //Plotno plotno1 = new Plotno();
+                plotno1.Width = tempWidth;
+                plotno1.Height = tempHeight;
+                plotno1.Size = new Size(tempWidth, plotno1.Height);
+                
+                plotno1.ResumeLayout(true);
+                plotno1.PerformLayout();
+            }
+            
+        }
+
+        private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

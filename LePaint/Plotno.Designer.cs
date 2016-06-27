@@ -39,7 +39,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Margin = new System.Windows.Forms.Padding(50, 2, 2, 2);
             this.MaximumSize = new System.Drawing.Size(1600, 800);
-            this.MinimumSize = new System.Drawing.Size(1600, 800);
+            this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "Plotno";
             this.Size = new System.Drawing.Size(1600, 800);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Plotno_Paint);

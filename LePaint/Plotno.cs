@@ -13,7 +13,7 @@ namespace LePaint
 {
     public partial class Plotno : UserControl
     {
-        private const int throtlingFactor = 2;
+        private const int throtlingFactor = 5;
 
         private IList<Point> path = new List<Point>();
         private IEnumerable<IObject> nextObjects = new List<IObject>();
@@ -32,10 +32,11 @@ namespace LePaint
                 Refresh();
             }
         }
-
+         
         public Plotno()
         {
             InitializeComponent();
+            this.ResizeRedraw = true;
             BufferedGraphicsContext currentContext = BufferedGraphicsManager.Current;
             buffer = currentContext.Allocate(CreateGraphics(), DisplayRectangle);
             buffer.Graphics.Clear(Color.White);
