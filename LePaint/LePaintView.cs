@@ -97,8 +97,17 @@ namespace LePaint
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SelectedSize?.Invoke(this, Int32.Parse(penWidth.Text));
-            Commit?.Invoke(this, new EventArgs());
+            OnSelectedSize(Int32.Parse(penWidth.Text));
+            OnCommit();
+        }
+
+        private void OnSelectedSize(int v)
+        {
+            var handlers = SelectedSize;
+            if (handlers != null)
+            {
+                handlers(this, v);
+            }
         }
 
         private void LePaintView_Resize(object sender, EventArgs e)
