@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 
 namespace LePaint.Objects
@@ -18,20 +19,9 @@ namespace LePaint.Objects
 
         public void Draw(Graphics graphics)
         {
-            Point first = Point.Empty;
-            foreach (var second in points)
-            {
-                if (first != Point.Empty && second != Point.Empty)
-                {
-                    DrawSegment(graphics, first, second);
-                }
-                first = second;
-            }
-        }
-
-        private void DrawSegment(Graphics graphics, Point first, Point second)
-        {
-            graphics.DrawLine(pen, first, second);
+            var pointTypes = points.Select(_ => (byte) PathPointType.Line).ToArray();
+            var path = new GraphicsPath(points.ToArray(), pointTypes);
+            graphics.DrawPath(pen, path);
         }
     }
 }
