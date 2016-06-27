@@ -17,7 +17,7 @@ namespace LePaint
 
         private IList<Point> path = new List<Point>();
         private IEnumerable<IObject> nextObjects = new List<IObject>();
-        private Graphics graphics;
+        private BufferedGraphics buffer;
         private bool mouseDown = false;
         private int throtleCounter = 0;
 
@@ -36,7 +36,9 @@ namespace LePaint
         public Plotno()
         {
             InitializeComponent();
-            this.graphics = CreateGraphics();
+            BufferedGraphicsContext currentContext = BufferedGraphicsManager.Current;
+            buffer = currentContext.Allocate(CreateGraphics(), DisplayRectangle);
+            buffer.Graphics.Clear(Color.White);
         }
 
         private void Plotno_MouseDown(object sender, MouseEventArgs e)
@@ -46,8 +48,7 @@ namespace LePaint
         }
         private void Plotno_MouseUp(object sender, MouseEventArgs e)
         {
-            PathUpdated(path);
-            Commit();
+            RefreshBuffer(path, true);
             path = new List<Point>();
             mouseDown = false;
         }
@@ -62,7 +63,7 @@ namespace LePaint
             if (throtleCounter > throtlingFactor)
             {
                 path.Add(e.Location);
-                PathUpdated(path);
+                RefreshBuffer(path);
                 throtleCounter = 0;
             }
             else
@@ -71,12 +72,22 @@ namespace LePaint
             }
         }
 
-        private void Plotno_Paint(object sender, PaintEventArgs e)
+        private void RefreshBuffer(IList<Point> path, bool commit = false)
         {
+            PathUpdated(path);
+            if (commit)
+            {
+                Commit();
+            }
             foreach (var ob in nextObjects)
             {
-                ob.Draw(graphics);
+                ob.Draw(buffer.Graphics);
             }
+        }
+
+        private void Plotno_Paint(object sender, PaintEventArgs e)
+        {
+            buffer.Render(e.Graphics);
         }
     }
 }
