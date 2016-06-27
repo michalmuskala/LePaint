@@ -27,7 +27,12 @@ namespace LePaint
 
         public bool ShowFilledSelector
         {
-            set { /* show fide the checkbox */ }
+            set {
+                if (value == true)
+                    checkBox1.Show();
+                else
+                    checkBox1.Hide();
+            }
         }
 
         public IEnumerable<string> BrushOptions
@@ -158,6 +163,11 @@ namespace LePaint
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
           
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            ShowFilledSelector = checkBox1.Checked;
         }
     }
 }
