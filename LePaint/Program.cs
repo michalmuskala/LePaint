@@ -16,7 +16,11 @@ namespace LePaint
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LePaintView());
+
+            var view = new LePaintView();
+            var model = new Canvas.Canvas();
+            var canvasPresenter = new Canvas.CanvasPresenter(view, model);
+            Application.Run(view);
         }
     }
 }

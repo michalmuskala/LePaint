@@ -47,7 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brushes\IBrush.cs" />
+    <Compile Include="Brushes\Line.cs" />
     <Compile Include="Canvas\Canvas.cs" />
+    <Compile Include="Canvas\CanvasPresenter.cs" />
+    <Compile Include="Canvas\ICanvas.cs" />
+    <Compile Include="Canvas\ICanvasView.cs" />
     <Compile Include="Files\FilePresenter.cs" />
     <Compile Include="LePaintView.cs">
       <SubType>Form</SubType>
@@ -55,6 +59,8 @@
     <Compile Include="LePaintView.Designer.cs">
       <DependentUpon>LePaintView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objects\IObject.cs" />
+    <Compile Include="Objects\Line.cs" />
     <Compile Include="Plotno.cs">
       <SubType>UserControl</SubType>
     </Compile>
