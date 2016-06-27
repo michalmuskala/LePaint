@@ -43,12 +43,12 @@ namespace LePaint
         public event EventHandler<Color> SelectedColor;
         public event EventHandler<int> SelectedSize;
         public event EventHandler<string> OptionSelected; // Call on option selection
-        public event EventHandler Commit;
+        public event EventHandler Commit; // event zapisu temporaryObject do Object
 
         public LePaintView()
         {
             InitializeComponent();
-            DoubleBuffered = true;
+            DoubleBuffered = true; 
             plotno1.PathUpdated = OnPathUpdated;
             plotno1.Commit = OnCommit;
         }
@@ -90,10 +90,7 @@ namespace LePaint
             }
         }
 
-        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-            int rozmiar = e.NewValue;
-        }
+       
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -113,6 +110,26 @@ namespace LePaint
         private void LePaintView_Resize(object sender, EventArgs e)
         {
             //trzeba obsluzyc zmiane rozmiaru / skalowanie plotna
+        }
+
+        private void LePaintView_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void plotno1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void plotno1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void plotno1_Load_2(object sender, EventArgs e)
+        {
+
         }
     }
 }

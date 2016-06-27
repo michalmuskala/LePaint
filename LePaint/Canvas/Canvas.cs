@@ -11,8 +11,8 @@ namespace LePaint.Canvas
 {
     class Canvas : ICanvas
     {
-        private IEnumerable<IObject> temporaryObjects = new List<IObject>();
-        private List<IObject> objects = new List<IObject>();
+        private IEnumerable<IObject> temporaryObjects = new List<IObject>(); //tymczasowo rysowane
+        private List<IObject> objects = new List<IObject>(); //lista gotowych obiektow
 
         public IEnumerable<IObject> Objects
         {
