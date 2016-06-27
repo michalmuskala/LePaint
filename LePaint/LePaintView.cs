@@ -169,5 +169,12 @@ namespace LePaint
         {
             ShowFilledSelector = checkBox1.Checked;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            OnSelectedColor(Color.White);
+            OnSelectedSize(10);
+            OnCommit();
+        }
     }
 }

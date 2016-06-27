@@ -28,26 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LePaintView));
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.colorPicker = new System.Windows.Forms.Label();
             this.penWidth = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.gumka = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.plotno1 = new LePaint.Plotno();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otwórzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszJakoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.plotno1 = new LePaint.Plotno();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,6 +100,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.gumka);
             this.splitContainer1.Panel1.Controls.Add(this.checkBox1);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.textBox2);
@@ -111,19 +117,36 @@
             this.splitContainer1.SplitterDistance = 90;
             this.splitContainer1.TabIndex = 4;
             // 
-            // textBox1
+            // pictureBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(68, 22);
-            this.textBox1.TabIndex = 4;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(6, 213);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // textBox2
+            // gumka
             // 
-            this.textBox2.Location = new System.Drawing.Point(3, 111);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(68, 22);
-            this.textBox2.TabIndex = 5;
+            this.gumka.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gumka.Location = new System.Drawing.Point(29, 50);
+            this.gumka.Name = "gumka";
+            this.gumka.Size = new System.Drawing.Size(20, 20);
+            this.gumka.TabIndex = 8;
+            this.gumka.Text = "GUMKa";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 169);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(63, 21);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Filled";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button1
             // 
@@ -134,6 +157,34 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(3, 111);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(68, 22);
+            this.textBox2.TabIndex = 5;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 83);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(68, 22);
+            this.textBox1.TabIndex = 4;
+            // 
+            // plotno1
+            // 
+            this.plotno1.AutoScroll = true;
+            this.plotno1.AutoSize = true;
+            this.plotno1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.plotno1.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.plotno1.Location = new System.Drawing.Point(4, 4);
+            this.plotno1.Margin = new System.Windows.Forms.Padding(50, 2, 2, 2);
+            this.plotno1.MaximumSize = new System.Drawing.Size(1600, 800);
+            this.plotno1.MinimumSize = new System.Drawing.Size(1600, 800);
+            this.plotno1.Name = "plotno1";
+            this.plotno1.Size = new System.Drawing.Size(1600, 800);
+            this.plotno1.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -157,6 +208,21 @@
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.plikToolStripMenuItem.Text = "Plik";
             // 
+            // nowyToolStripMenuItem
+            // 
+            this.nowyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.xToolStripMenuItem});
+            this.nowyToolStripMenuItem.Name = "nowyToolStripMenuItem";
+            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.nowyToolStripMenuItem.Text = "Nowy";
+            this.nowyToolStripMenuItem.Click += new System.EventHandler(this.nowyToolStripMenuItem_Click);
+            // 
+            // xToolStripMenuItem
+            // 
+            this.xToolStripMenuItem.Name = "xToolStripMenuItem";
+            this.xToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
+            this.xToolStripMenuItem.Text = "600 x ";
+            // 
             // otwórzToolStripMenuItem
             // 
             this.otwórzToolStripMenuItem.Name = "otwórzToolStripMenuItem";
@@ -174,45 +240,6 @@
             this.zapiszJakoToolStripMenuItem.Name = "zapiszJakoToolStripMenuItem";
             this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";
-            // 
-            // nowyToolStripMenuItem
-            // 
-            this.nowyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.xToolStripMenuItem});
-            this.nowyToolStripMenuItem.Name = "nowyToolStripMenuItem";
-            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
-            this.nowyToolStripMenuItem.Text = "Nowy";
-            this.nowyToolStripMenuItem.Click += new System.EventHandler(this.nowyToolStripMenuItem_Click);
-            // 
-            // xToolStripMenuItem
-            // 
-            this.xToolStripMenuItem.Name = "xToolStripMenuItem";
-            this.xToolStripMenuItem.Size = new System.Drawing.Size(123, 26);
-            this.xToolStripMenuItem.Text = "600 x ";
-            // 
-            // plotno1
-            // 
-            this.plotno1.AutoScroll = true;
-            this.plotno1.AutoSize = true;
-            this.plotno1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.plotno1.Location = new System.Drawing.Point(4, 4);
-            this.plotno1.Margin = new System.Windows.Forms.Padding(50, 2, 2, 2);
-            this.plotno1.MaximumSize = new System.Drawing.Size(1600, 800);
-            this.plotno1.MinimumSize = new System.Drawing.Size(1600, 800);
-            this.plotno1.Name = "plotno1";
-            this.plotno1.Size = new System.Drawing.Size(1600, 800);
-            this.plotno1.TabIndex = 0;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 169);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(63, 21);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Filled";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // LePaintView
             // 
@@ -234,6 +261,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -259,6 +287,8 @@
         private System.Windows.Forms.ToolStripMenuItem zapiszJakoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label gumka;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
     }
 }
