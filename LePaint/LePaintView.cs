@@ -10,10 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LePaint.Brushes;
 using LePaint.Objects;
+using LePaint.Files;
 
 namespace LePaint
 {
-    public partial class LePaintView : Form, ICanvasView
+    public partial class LePaintView : Form, ICanvasView, IFileView
     {
         public IEnumerable<IObject> NextObjects
         {
@@ -49,6 +50,8 @@ namespace LePaint
         public event EventHandler<int> SelectedSize;
         public event EventHandler<string> OptionSelected; // Call on option selection
         public event EventHandler Commit; // event zapisu temporaryObject do Object
+        public event EventHandler<string> LoadRequested;
+        public event EventHandler<SaveRequestArgs> SaveRequested;
 
         public LePaintView()
         {
@@ -95,8 +98,6 @@ namespace LePaint
             }
         }
 
-       
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             OnSelectedSize(Int32.Parse(penWidth.Text));
@@ -135,7 +136,11 @@ namespace LePaint
         private void plotno1_Load_2(object sender, EventArgs e)
         {
 
+        }
 
+        public void DumpToGraphics(Graphics graphics)
+        {
+            plotno1.DumpToGraphics(graphics);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -175,6 +180,30 @@ namespace LePaint
             OnSelectedColor(Color.White);
             OnSelectedSize(10);
             OnCommit();
+        }
+
+        public void LoadBitmap(Bitmap bitmap)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void zapiszJakoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OnSaveRequested(@"C:\Users\Michal\Desktop\test.bmp");
+        }
+
+        private void OnSaveRequested(string v)
+        {
+            var handlers = SaveRequested;
+            if (handlers != null)
+            {
+                handlers(this, new SaveRequestArgs()
+                {
+                    Filename = v,
+                    Width = plotno1.Width,
+                    Height = plotno1.Height
+                });
+            }
         }
     }
 }

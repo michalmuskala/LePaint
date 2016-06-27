@@ -53,12 +53,14 @@
     <Compile Include="Canvas\ICanvas.cs" />
     <Compile Include="Canvas\ICanvasView.cs" />
     <Compile Include="Files\FilePresenter.cs" />
+    <Compile Include="Files\IFileView.cs" />
     <Compile Include="LePaintView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LePaintView.Designer.cs">
       <DependentUpon>LePaintView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objects\Image.cs" />
     <Compile Include="Objects\IObject.cs" />
     <Compile Include="Objects\Line.cs" />
     <Compile Include="Plotno.cs">

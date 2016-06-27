@@ -20,6 +20,7 @@ namespace LePaint
             var view = new LePaintView();
             var model = new Canvas.Canvas();
             var canvasPresenter = new Canvas.CanvasPresenter(view, model);
+            var filePresenter = new Files.FilePresenter(view);
             Application.Run(view);
         }
     }

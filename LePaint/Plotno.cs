@@ -91,5 +91,10 @@ namespace LePaint
         {
             buffer.Render(e.Graphics);
         }
+
+        internal void DumpToGraphics(Graphics graphics)
+        {
+            buffer.Render(graphics);
+        }
     }
 }
