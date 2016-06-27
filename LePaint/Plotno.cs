@@ -60,9 +60,10 @@ namespace LePaint
                 return;
             }
 
+            path.Add(e.Location);
+
             if (throtleCounter > throtlingFactor)
             {
-                path.Add(e.Location);
                 RefreshBuffer(path);
                 throtleCounter = 0;
             }
