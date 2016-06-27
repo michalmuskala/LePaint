@@ -15,9 +15,11 @@ namespace LePaint.Canvas
         event EventHandler<string> BrushSelected;
         event EventHandler<Color> SelectedColor;
         event EventHandler<int> SelectedSize;
+        event EventHandler<string> OptionSelected;
         event EventHandler Commit;
 
         IEnumerable<IObject> NextObjects { set; }
+        IEnumerable<string> BrushOptions { set; }
         bool ShowColorAndSizeSelectors { set; }
         bool ShowFilledSelector { set; }
     }

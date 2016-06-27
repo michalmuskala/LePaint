@@ -13,6 +13,7 @@ namespace LePaint.Canvas
         ICanvasView view;
         ICanvas model;
 
+        private string currentOption;
         private IBrush currentBrush;
         private Pen currentPen = new Pen(Color.Black, 1);
         private Dictionary<string, IBrush> brushes = new Dictionary<string, IBrush>();
@@ -24,12 +25,18 @@ namespace LePaint.Canvas
             view.PathUpdated += OnPathUpdated;
             view.SelectedColor += OnColorSelected;
             view.SelectedSize += OnSizeSelected;
+            view.OptionSelected += OnOptionSelected;
             view.Commit += OnCommit;
             this.model = model;
 
             brushes.Add("line", new Brushes.Line());
             // Select default brush
             currentBrush = brushes["line"];
+        }
+
+        private void OnOptionSelected(object sender, string e)
+        {
+            currentOption = e;
         }
 
         private void OnCommit(object sender, EventArgs e)
@@ -52,6 +59,7 @@ namespace LePaint.Canvas
             if (currentBrush != null)
             {
                 currentBrush.Pen = currentPen;
+                currentBrush.Option = currentOption;
                 model.RefreshTemporaryObjects(currentBrush, e);
                 view.NextObjects = model.Objects;
             }
