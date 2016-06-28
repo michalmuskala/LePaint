@@ -1,31 +1,28 @@
-﻿using System;
+﻿using LePaint.Objects;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LePaint.Objects;
-using System.Drawing.Drawing2D;
 
 namespace LePaint.Brushes
 {
-    class Line : IBrush
+    class Polygon : IBrush
     {
         public bool AffectedByPen { get { return true; } }
-        public bool AffectedByFilled { get { return false; } }
-        public IEnumerable<string> Options { get { return new string[] { "Line", "Bezier" }; } }
+        public bool AffectedByFilled { get { return true; } }
+        public IEnumerable<string> Options { get { return new string[] { }; } }
         public bool NeedsFile { get { return false; } }
 
-        public bool Filled { set { return; } }
+        public bool Filled { set; protected get; }
         public Pen Pen { set; protected get; }
         public string Option { set; protected get; }
         public string Filename { set { return; } }
 
         public virtual IEnumerable<IObject> GenerateObjects(IEnumerable<Point> path)
         {
-            PathPointType option;
-            Enum.TryParse<PathPointType>(Option, true, out option);
-            yield return new Objects.Line(Pen, path.ToList(), option);
+            yield return new Objects.Polygon(Pen, Filled, path);
         }
     }
 }

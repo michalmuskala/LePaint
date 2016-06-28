@@ -33,8 +33,6 @@ namespace LePaint.Objects
                     }
                 }
                     this.path = new GraphicsPath(points.ToArray(), pointTypes);
-                
-                this.pen.Color = Color.Blue;
             }
         }
 

@@ -25,7 +25,19 @@ namespace LePaint
 
         public bool ShowColorAndSizeSelectors 
         {
-            set { /* show/hide selectors */ }
+            set
+            {
+                if (value)
+                {
+                    penWidth.Show();
+                    colorPicker.Show();
+                }
+                else
+                {
+                    colorPicker.Hide();
+                    penWidth.Hide();
+                }
+            }
         }
 
         public bool ShowFilledSelector
@@ -42,9 +54,24 @@ namespace LePaint
         {
             set
             {
-                /* a combobox with those options */
+                options.Items.Clear();
+                foreach (var option in value)
+                {
+                    options.Items.Add(option);
+                }
+                if (value.Count() != 0)
+                {
+                    options.SelectedIndex = 0;
+                    options.Show();
+                }
+                else
+                {
+                    options.Hide();
+                }
             }
         }
+
+        public bool BrushNeedsFile { private get; set; }
 
         public event EventHandler<IEnumerable<Point>> PathUpdated;
         public event EventHandler<string> BrushSelected; // Call when brush selected
@@ -55,6 +82,7 @@ namespace LePaint
         public event EventHandler<string> LoadRequested;
         public event EventHandler<SaveRequestArgs> SaveRequested;
         public event EventHandler<bool> FilledChanged;
+        public event EventHandler<string> FileSelected;
 
         public LePaintView(int canvasWidth, int canvasHeight)
         {
@@ -66,6 +94,7 @@ namespace LePaint
             plotno1.MaximumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
             plotno1.MinimumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
             plotno1.Size = new System.Drawing.Size(canvasWidth, canvasHeight);
+            penWidth.SelectedIndex = 0;
             Load += (sender, args) => OnBrushSelected("line");
         }
         public LePaintView() : this(1200, 650)
@@ -146,8 +175,30 @@ namespace LePaint
 
         private void brush_Click(object sender, EventArgs e)
         {
+            string file;
             var box = sender as PictureBox;
             OnBrushSelected(box.Name.Replace("Brush", ""));
+            if (BrushNeedsFile)
+            {
+                if (FileRead(out file))
+                {
+                    OnFileSelected(file);
+                }
+                else
+                {
+                    ShowError("Nie wybrano pliku!");
+                    OnBrushSelected("line");
+                }
+            }
+        }
+
+        private void OnFileSelected(string v)
+        {
+            var handlers = FileSelected;
+            if (handlers != null)
+            {
+                handlers(this, v);
+            }
         }
 
         private void OnBrushSelected(string v)
@@ -175,12 +226,24 @@ namespace LePaint
 
         private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string file;
+            if (FileRead(out file))
+            {
+                OnLoadRequested(file);
+            }
+        }
+
+        private bool FileRead(out string file)
+        {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = Filter;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                OnLoadRequested(dialog.FileName);
+                file = dialog.FileName;
+                return true;
             }
+            file = "";
+            return false;
         }
 
         private void OnLoadRequested(string safeFileName)
@@ -215,9 +278,23 @@ namespace LePaint
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AppStarter.NewWindow();
+        }
 
+        private void options_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OnOptionSelected(options.Text);
+        }
+
+        private void OnOptionSelected(string text)
+        {
+            var handlers = OptionSelected;
+            if (handlers != null)
+            {
+                handlers(this, text);
+            }
         }
     }
 }

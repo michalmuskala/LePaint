@@ -14,10 +14,12 @@ namespace LePaint.Brushes
         public bool AffectedByFilled { get { return false; } }
         // Take options fro GraphicsPoint
         public IEnumerable<string> Options { get { return new List<string>(); } }
+        public bool NeedsFile { get { return false; } }
 
         public bool Filled { set { return; } }
         public Pen Pen { set; private get; }
         public string Option { set; private get; }
+        public string Filename { set { return; } }
 
         public IEnumerable<IObject> GenerateObjects(IEnumerable<Point> path)
         {

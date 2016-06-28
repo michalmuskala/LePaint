@@ -63,6 +63,16 @@ namespace LePaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bottle_01_128 {
+            get {
+                object obj = ResourceManager.GetObject("Bottle-01-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Data_Erase_128 {
             get {
                 object obj = ResourceManager.GetObject("Data-Erase-128", resourceCulture);
@@ -73,9 +83,39 @@ namespace LePaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Free_Hand_Selection_128 {
+            get {
+                object obj = ResourceManager.GetObject("Free-Hand-Selection-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Images_128 {
+            get {
+                object obj = ResourceManager.GetObject("Images-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Outlined_Triangular_Left_Arrow_128 {
             get {
                 object obj = ResourceManager.GetObject("Outlined-Triangular-Left-Arrow-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pencil_128 {
+            get {
+                object obj = ResourceManager.GetObject("Pencil-128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

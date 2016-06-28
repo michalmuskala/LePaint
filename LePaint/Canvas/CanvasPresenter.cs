@@ -16,7 +16,7 @@ namespace LePaint.Canvas
         private string currentOption;
         private IBrush currentBrush;
         private Pen currentPen = new Pen(Color.Black, 1);
-        private Dictionary<string, IBrush> brushes = new Dictionary<string, IBrush>();
+        private Dictionary<string, IBrush> brushes;
 
         public CanvasPresenter(ICanvasView view, ICanvas model)
         {
@@ -33,11 +33,14 @@ namespace LePaint.Canvas
 
         private void InitializeBrushes()
         {
+            brushes = new Dictionary<string, IBrush>();
             brushes.Add("line", new Brushes.Line());
             brushes.Add("rubber", new Brushes.Rubber());
             brushes.Add("rectangle", new Brushes.Rectangle());
             brushes.Add("elipsis", new Brushes.Elipsis());
             brushes.Add("spray", new Brushes.Spray());
+            brushes.Add("image", new Brushes.Image());
+            brushes.Add("polygon", new Brushes.Polygon());
         }
 
         private void InitializeModel(ICanvas model, Bitmap bmp)
@@ -60,7 +63,13 @@ namespace LePaint.Canvas
             view.SelectedSize += OnSizeSelected;
             view.OptionSelected += OnOptionSelected;
             view.FilledChanged += OnFilledChanged;
+            view.FileSelected += OnFileSelected;
             view.Commit += OnCommit;
+        }
+
+        private void OnFileSelected(object sender, string e)
+        {
+            currentBrush.Filename = e;
         }
 
         private void OnFilledChanged(object sender, bool e)
@@ -75,6 +84,7 @@ namespace LePaint.Canvas
 
         private void OnCommit(object sender, EventArgs e)
         {
+            InitializeBrushes();
             model.CommitTemporaryObjects();
         }
 
@@ -104,6 +114,8 @@ namespace LePaint.Canvas
             currentBrush = brushes[brushName];
             view.ShowColorAndSizeSelectors = currentBrush.AffectedByPen;
             view.ShowFilledSelector = currentBrush.AffectedByFilled;
+            view.BrushNeedsFile = currentBrush.NeedsFile;
+            view.BrushOptions = currentBrush.Options;
         }
     }
 }

@@ -13,10 +13,12 @@ namespace LePaint.Brushes
         bool Filled { set; }
         Pen Pen { set; }
         string Option { set; }
+        string Filename { set; }
 
         bool AffectedByPen { get; }
         bool AffectedByFilled { get; }
         IEnumerable<string> Options { get; }
+        bool NeedsFile { get; }
 
         IEnumerable<IObject> GenerateObjects(IEnumerable<Point> path);
     }

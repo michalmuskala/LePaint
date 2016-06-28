@@ -51,6 +51,7 @@
     <Compile Include="Brushes\IBrush.cs" />
     <Compile Include="Brushes\Image.cs" />
     <Compile Include="Brushes\Line.cs" />
+    <Compile Include="Brushes\Polygon.cs" />
     <Compile Include="Brushes\Rectangle.cs" />
     <Compile Include="Brushes\Rubber.cs" />
     <Compile Include="Brushes\Spray.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Objects\Image.cs" />
     <Compile Include="Objects\IObject.cs" />
     <Compile Include="Objects\Line.cs" />
+    <Compile Include="Objects\Polygon.cs" />
     <Compile Include="Objects\Rectangle.cs" />
     <Compile Include="Objects\Spray.cs" />
     <Compile Include="Plotno.cs">
@@ -121,6 +123,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shape-Circle-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pencil-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Free-Hand-Selection-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bottle-01-128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

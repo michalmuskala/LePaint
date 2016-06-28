@@ -5,8 +5,8 @@ namespace LePaint.Objects
     internal class Elipsis : Rectangle
     {
 
-        public Elipsis(Pen pen, bool filled, Point point1, Point point2)
-            : base(pen, filled, point1, point2)
+        public Elipsis(Pen pen, bool filled, Point point1, Point point2, bool regular)
+            : base(pen, filled, point1, point2, regular)
         {
         }
 
