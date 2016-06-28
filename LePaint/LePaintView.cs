@@ -29,7 +29,7 @@ namespace LePaint
         public bool ShowFilledSelector
         {
             set {
-                if (value == true)
+                if (value)
                     checkBox1.Show();
                 else
                     checkBox1.Hide();
@@ -119,31 +119,6 @@ namespace LePaint
             }
         }
 
-        private void LePaintView_Resize(object sender, EventArgs e)
-        {
-            //trzeba obsluzyc zmiane rozmiaru / skalowanie plotna
-        }
-
-        private void LePaintView_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void plotno1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void plotno1_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void plotno1_Load_2(object sender, EventArgs e)
-        {
-
-        }
-
         public void DumpToGraphics(Graphics graphics)
         {
             plotno1.DumpToGraphics(graphics);
@@ -169,11 +144,6 @@ namespace LePaint
                 plotno1.PerformLayout();
             }
             
-        }
-
-        private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-          
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -215,7 +185,6 @@ namespace LePaint
             {
                 OnLoadRequested(dialog.FileName);
             }
-            
         }
 
         private void OnLoadRequested(string safeFileName)
@@ -224,6 +193,29 @@ namespace LePaint
             if (handlers != null)
             {
                 handlers(this, safeFileName);
+            }
+        }
+
+        private void zapiszToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OnSaveRequested(null);
+        }
+
+        public void ShowError(string v)
+        {
+            MessageBox.Show(v, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void zapiszJakoToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            dialog.AddExtension = true;
+            dialog.DefaultExt = ".bmp";
+            dialog.CreatePrompt = true;
+            dialog.Filter = "JPG|*.jpg|PNG|*.png|BMP|*.bmp";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                OnSaveRequested(dialog.FileName);
             }
         }
     }

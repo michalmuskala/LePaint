@@ -22,5 +22,6 @@ namespace LePaint.Files
         event EventHandler<SaveRequestArgs> SaveRequested;
 
         void DumpToGraphics(Graphics graphics);
+        void ShowError(string v);
     }
 }

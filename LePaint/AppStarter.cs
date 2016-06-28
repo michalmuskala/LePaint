@@ -31,11 +31,12 @@ namespace LePaint
                 var model = new Canvas.Canvas();
                 var canvasPresenter = new Canvas.CanvasPresenter(view, model, bitmap);
                 var filePresenter = new Files.FilePresenter(view, imageName);
+                image.Dispose();
                 view.Show();
             }
             catch (Exception e)
             {
-                MessageBox.Show(string.Format("Błąd otwierania pliku: {}", e.Message));
+                MessageBox.Show(string.Format("Błąd otwierania pliku: {0}", e.Message));
             }
 
         }

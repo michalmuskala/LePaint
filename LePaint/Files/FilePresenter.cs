@@ -30,15 +30,21 @@ namespace LePaint.Files
         {
         }
 
-        private void OnSaveRequested(object sender, SaveRequestArgs e)
+        private void OnSaveRequested(object sender, SaveRequestArgs args)
         {
-            var bitmap = new Bitmap(e.Width, e.Height);
-            view.DumpToGraphics(Graphics.FromImage(bitmap));
-            if (e.Filename != null)
-            {
-                Name = e.Filename;
+            try {
+                var bitmap = new Bitmap(args.Width, args.Height);
+                view.DumpToGraphics(Graphics.FromImage(bitmap));
+                if (args.Filename != null)
+                {
+                    Name = args.Filename;
+                }
+                bitmap.Save(name);
             }
-            bitmap.Save(name);
+            catch (Exception e)
+            {
+                view.ShowError(string.Format("Błąd zapisu pliku: {0}", e.Message));
+            }
         }
 
         private static string DefaultName()
