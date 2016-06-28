@@ -84,7 +84,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\ISettings.cs" />
     <EmbeddedResource Include="LePaintView.resx">
       <DependentUpon>LePaintView.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +136,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Bottle-01-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Freeze-Rows-Columns-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sun-128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
