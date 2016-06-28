@@ -73,6 +73,16 @@ namespace LePaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Images_128 {
+            get {
+                object obj = ResourceManager.GetObject("Images-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Outlined_Triangular_Left_Arrow_128 {
             get {
                 object obj = ResourceManager.GetObject("Outlined-Triangular-Left-Arrow-128", resourceCulture);
