@@ -179,10 +179,10 @@
             this.plotno1.Cursor = System.Windows.Forms.Cursors.Cross;
             this.plotno1.Location = new System.Drawing.Point(4, 4);
             this.plotno1.Margin = new System.Windows.Forms.Padding(50, 2, 2, 2);
-            this.plotno1.MaximumSize = new System.Drawing.Size(1600, 800);
-            this.plotno1.MinimumSize = new System.Drawing.Size(1600, 800);
+            this.plotno1.MaximumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
+            this.plotno1.MinimumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
             this.plotno1.Name = "plotno1";
-            this.plotno1.Size = new System.Drawing.Size(1600, 800);
+            this.plotno1.Size = new System.Drawing.Size(canvasWidth, canvasHeight);
             this.plotno1.TabIndex = 0;
             // 
             // menuStrip1

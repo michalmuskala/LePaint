@@ -16,10 +16,11 @@ namespace LePaint.Files
 
     public interface IFileView
     {
+        string Text { set; }
+
         event EventHandler<string> LoadRequested;
         event EventHandler<SaveRequestArgs> SaveRequested;
 
         void DumpToGraphics(Graphics graphics);
-        void LoadBitmap(Bitmap bitmap);
     }
 }

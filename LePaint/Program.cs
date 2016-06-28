@@ -14,14 +14,7 @@ namespace LePaint
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-
-            var view = new LePaintView();
-            var model = new Canvas.Canvas();
-            var canvasPresenter = new Canvas.CanvasPresenter(view, model);
-            var filePresenter = new Files.FilePresenter(view);
-            Application.Run(view);
+            AppStarter.InitialWindow();
         }
     }
 }

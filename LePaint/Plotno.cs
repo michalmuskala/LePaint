@@ -29,6 +29,7 @@ namespace LePaint
             set
             {
                 nextObjects = value;
+                Redraw();
                 Refresh();
             }
         }
@@ -81,6 +82,10 @@ namespace LePaint
             {
                 Commit();
             }
+        }
+
+        private void Redraw()
+        {
             foreach (var ob in nextObjects)
             {
                 ob.Draw(buffer.Graphics);

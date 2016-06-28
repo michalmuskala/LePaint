@@ -53,12 +53,20 @@ namespace LePaint
         public event EventHandler<string> LoadRequested;
         public event EventHandler<SaveRequestArgs> SaveRequested;
 
-        public LePaintView()
+        private int canvasHeight;
+        private int canvasWidth;
+
+        public LePaintView(int canvasWidth, int canvasHeight)
         {
+            this.canvasHeight = canvasHeight;
+            this.canvasWidth = canvasWidth;
             InitializeComponent();
-            DoubleBuffered = true; 
+            DoubleBuffered = true;
             plotno1.PathUpdated = OnPathUpdated;
             plotno1.Commit = OnCommit;
+        }
+        public LePaintView() : this(1600, 1600)
+        {
         }
 
         private void OnCommit()
@@ -182,11 +190,6 @@ namespace LePaint
             OnCommit();
         }
 
-        public void LoadBitmap(Bitmap bitmap)
-        {
-            throw new NotImplementedException();
-        }
-
         private void zapiszJakoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OnSaveRequested(@"C:\Users\Michal\Desktop\test.bmp");
@@ -208,20 +211,22 @@ namespace LePaint
 
         private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String openedFilePath;
-            String fileName;
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "JPG|*.jpg|PNG|*.png|BMP|*.bmp";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                fileName = dialog.FileName;
-                if (fileName.Remove(0, (fileName.LastIndexOf(".") + 1)) != "jpg" && fileName.Remove(0, (fileName.LastIndexOf(".") + 1)) != "png" && fileName.Remove(0, (fileName.LastIndexOf(".") + 1)) != "bmp")
-                {
-                    MessageBox.Show(fileName.Remove(0, (fileName.LastIndexOf(".")+1)));
-                }
-                openedFilePath = dialog.SafeFileName;
+                OnLoadRequested(dialog.FileName);
             }
             
+        }
+
+        private void OnLoadRequested(string safeFileName)
+        {
+            var handlers = LoadRequested;
+            if (handlers != null)
+            {
+                handlers(this, safeFileName);
+            }
         }
     }
 }

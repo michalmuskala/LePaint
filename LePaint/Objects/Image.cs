@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LePaint.Objects
 {
-    class Image : IObject
+    internal class Image : IObject
     {
         private readonly Bitmap bitmap;
 
-        Image(Bitmap bitmap)
+        public Image(Bitmap bitmap)
         {
             this.bitmap = bitmap;
         }

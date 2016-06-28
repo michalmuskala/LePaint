@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppStarter.cs" />
     <Compile Include="Brushes\IBrush.cs" />
+    <Compile Include="Brushes\Image.cs" />
     <Compile Include="Brushes\Line.cs" />
     <Compile Include="Canvas\Canvas.cs" />
     <Compile Include="Canvas\CanvasPresenter.cs" />

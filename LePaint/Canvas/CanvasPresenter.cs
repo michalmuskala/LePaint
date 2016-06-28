@@ -20,6 +20,37 @@ namespace LePaint.Canvas
 
         public CanvasPresenter(ICanvasView view, ICanvas model)
         {
+            InitializeView(view);
+            this.model = model;
+            InitializeBrushes();
+        }
+
+        public CanvasPresenter(ICanvasView view, ICanvas model, Bitmap bmp)
+            : this(view, model)
+        {
+            InitializeModel(model, bmp);
+        }
+
+        private void InitializeBrushes()
+        {
+            brushes.Add("line", new Brushes.Line());
+            // Select default brush
+            currentBrush = brushes["line"];
+        }
+
+        private void InitializeModel(ICanvas model, Bitmap bmp)
+        {
+            this.model = model;
+            if (bmp != null)
+            {
+                model.RefreshTemporaryObjects(new Brushes.Image(bmp), new List<Point>());
+                model.CommitTemporaryObjects();
+                view.NextObjects = model.Objects;
+            }
+        }
+
+        private void InitializeView(ICanvasView view)
+        {
             this.view = view;
             view.BrushSelected += OnBrushSelected;
             view.PathUpdated += OnPathUpdated;
@@ -27,11 +58,6 @@ namespace LePaint.Canvas
             view.SelectedSize += OnSizeSelected;
             view.OptionSelected += OnOptionSelected;
             view.Commit += OnCommit;
-            this.model = model;
-
-            brushes.Add("line", new Brushes.Line());
-            // Select default brush
-            currentBrush = brushes["line"];
         }
 
         private void OnOptionSelected(object sender, string e)
