@@ -34,6 +34,7 @@ namespace LePaint.Canvas
         private void InitializeBrushes()
         {
             brushes.Add("line", new Brushes.Line());
+            brushes.Add("rubber", new Brushes.Rubber());
             // Select default brush
             currentBrush = brushes["line"];
         }

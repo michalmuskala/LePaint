@@ -16,6 +16,8 @@ namespace LePaint
 {
     public partial class LePaintView : Form, ICanvasView, IFileView
     {
+        const string Filter = "JPG|*.jpg|PNG|*.png|BMP|*.bmp|GIF|*.gif|TIFF|*.tiff";
+
         public IEnumerable<IObject> NextObjects
         {
             set { plotno1.NextObjects = value; }
@@ -124,43 +126,24 @@ namespace LePaint
             plotno1.DumpToGraphics(graphics);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //int newWidth = 500;
-            //plotno1.MaximumSize = new Size(newWidth, plotno1.Height);
-            //plotno1.Size = new Size(newWidth, plotno1.Height);
-            plotno1.SuspendLayout();
-            
-            int tempWidth = Int32.Parse(textBox1.Text);
-            int tempHeight = Int32.Parse(textBox2.Text);
-            if ((tempWidth > 100 && tempHeight > 100) && (tempHeight < 2000 && tempWidth < 2000))
-            {
-                //Plotno plotno1 = new Plotno();
-                plotno1.Width = tempWidth;
-                plotno1.Height = tempHeight;
-                plotno1.Size = new Size(tempWidth, plotno1.Height);
-                
-                plotno1.ResumeLayout(true);
-                plotno1.PerformLayout();
-            }
-            
-        }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             ShowFilledSelector = checkBox1.Checked;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void brush_Click(object sender, EventArgs e)
         {
-            OnSelectedColor(Color.White);
-            OnSelectedSize(10);
-            OnCommit();
+            var box = sender as PictureBox;
+            OnBrushSelected(box.Name.Replace("Brush", ""));
         }
 
-        private void zapiszJakoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OnBrushSelected(string v)
         {
-            OnSaveRequested(@"C:\Users\Michal\Desktop\test.bmp");
+            var handlers = BrushSelected;
+            if (handlers != null)
+            {
+                handlers(this, v);
+            }
         }
 
         private void OnSaveRequested(string v)
@@ -180,7 +163,7 @@ namespace LePaint
         private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "JPG|*.jpg|PNG|*.png|BMP|*.bmp";
+            dialog.Filter = Filter;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 OnLoadRequested(dialog.FileName);
@@ -212,11 +195,16 @@ namespace LePaint
             dialog.AddExtension = true;
             dialog.DefaultExt = ".bmp";
             dialog.CreatePrompt = true;
-            dialog.Filter = "JPG|*.jpg|PNG|*.png|BMP|*.bmp";
+            dialog.Filter = Filter;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 OnSaveRequested(dialog.FileName);
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
