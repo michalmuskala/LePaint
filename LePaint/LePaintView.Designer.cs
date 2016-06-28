@@ -108,7 +108,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(10, 25);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -138,8 +138,8 @@
             // sprayBrush
             // 
             this.sprayBrush.Image = global::LePaint.Properties.Resources.Bottle_01_128;
-            this.sprayBrush.Location = new System.Drawing.Point(1, 184);
-            this.sprayBrush.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sprayBrush.Location = new System.Drawing.Point(0, 184);
+            this.sprayBrush.Margin = new System.Windows.Forms.Padding(2);
             this.sprayBrush.Name = "sprayBrush";
             this.sprayBrush.Size = new System.Drawing.Size(29, 28);
             this.sprayBrush.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -342,7 +342,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(378, 411);
             this.Name = "LePaintView";
             this.Text = "Form1";
