@@ -86,6 +86,7 @@ namespace LePaint
 
         private void Redraw()
         {
+            buffer.Graphics.Clear(Color.White);
             foreach (var ob in nextObjects)
             {
                 ob.Draw(buffer.Graphics);

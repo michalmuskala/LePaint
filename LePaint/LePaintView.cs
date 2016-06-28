@@ -54,6 +54,7 @@ namespace LePaint
         public event EventHandler Commit; // event zapisu temporaryObject do Object
         public event EventHandler<string> LoadRequested;
         public event EventHandler<SaveRequestArgs> SaveRequested;
+        public event EventHandler<bool> FilledChanged;
 
         public LePaintView(int canvasWidth, int canvasHeight)
         {
@@ -128,7 +129,17 @@ namespace LePaint
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            ShowFilledSelector = checkBox1.Checked;
+            var checkbox = sender as CheckBox;
+            OnFilledChanged(checkbox.Checked);
+        }
+
+        private void OnFilledChanged(bool v)
+        {
+            var handlers = FilledChanged;
+            if (handlers != null)
+            {
+                handlers(this, v);
+            }
         }
 
         private void brush_Click(object sender, EventArgs e)

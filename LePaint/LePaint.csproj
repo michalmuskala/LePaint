@@ -50,6 +50,7 @@
     <Compile Include="Brushes\IBrush.cs" />
     <Compile Include="Brushes\Image.cs" />
     <Compile Include="Brushes\Line.cs" />
+    <Compile Include="Brushes\Rectangle.cs" />
     <Compile Include="Brushes\Rubber.cs" />
     <Compile Include="Canvas\Canvas.cs" />
     <Compile Include="Canvas\CanvasPresenter.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Objects\Image.cs" />
     <Compile Include="Objects\IObject.cs" />
     <Compile Include="Objects\Line.cs" />
+    <Compile Include="Objects\Rectangle.cs" />
     <Compile Include="Plotno.cs">
       <SubType>UserControl</SubType>
     </Compile>

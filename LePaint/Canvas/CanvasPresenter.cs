@@ -35,6 +35,7 @@ namespace LePaint.Canvas
         {
             brushes.Add("line", new Brushes.Line());
             brushes.Add("rubber", new Brushes.Rubber());
+            brushes.Add("rectangle", new Brushes.Rectangle());
             // Select default brush
             currentBrush = brushes["line"];
         }
@@ -58,7 +59,13 @@ namespace LePaint.Canvas
             view.SelectedColor += OnColorSelected;
             view.SelectedSize += OnSizeSelected;
             view.OptionSelected += OnOptionSelected;
+            view.FilledChanged += OnFilledChanged;
             view.Commit += OnCommit;
+        }
+
+        private void OnFilledChanged(object sender, bool e)
+        {
+            currentBrush.Filled = e;
         }
 
         private void OnOptionSelected(object sender, string e)

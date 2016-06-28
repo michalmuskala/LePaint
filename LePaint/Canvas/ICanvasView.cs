@@ -16,6 +16,7 @@ namespace LePaint.Canvas
         event EventHandler<Color> SelectedColor;
         event EventHandler<int> SelectedSize;
         event EventHandler<string> OptionSelected;
+        event EventHandler<bool> FilledChanged;
         event EventHandler Commit;
 
         IEnumerable<IObject> NextObjects { set; }
