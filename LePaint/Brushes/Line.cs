@@ -13,16 +13,7 @@ namespace LePaint.Brushes
     {
         public bool AffectedByPen { get { return true; } }
         public bool AffectedByFilled { get { return false; } }
-        public IEnumerable<string> Options
-        {
-            get
-            {
-                var options = new List<string>();
-                options.Add("Line");
-                options.Add("Bezier");
-                return options;
-            }
-        }
+        public IEnumerable<string> Options { get { return new string[] { "Line", "Bezier" }; } }
         public bool NeedsFile { get { return false; } }
 
         public bool Filled { set { return; } }

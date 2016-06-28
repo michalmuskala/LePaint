@@ -13,7 +13,7 @@ namespace LePaint.Brushes
         public override IEnumerable<IObject> GenerateObjects(IEnumerable<Point> path)
         {
             if (path.Count() != 0)
-                yield return new Objects.Elipsis(Pen, Filled, path.First(), path.Last());
+                yield return new Objects.Elipsis(Pen, Filled, path.First(), path.Last(), Option == "Regularny");
         }
     }
 }

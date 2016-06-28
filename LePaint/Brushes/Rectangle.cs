@@ -12,7 +12,7 @@ namespace LePaint.Brushes
     {
         public bool AffectedByPen { get { return true; } }
         public bool AffectedByFilled { get { return true; } }
-        public IEnumerable<string> Options { get { return new List<string>(); } }
+        public IEnumerable<string> Options { get { return new string[] { "Dowolny", "Regularny" }; } }
         public bool NeedsFile { get { return false; } }
 
         public bool Filled { set; protected get; }
@@ -23,7 +23,7 @@ namespace LePaint.Brushes
         public virtual IEnumerable<IObject> GenerateObjects(IEnumerable<Point> path)
         {
             if (path.Count() != 0)
-                yield return new Objects.Rectangle(Pen, Filled, path.First(), path.Last());
+                yield return new Objects.Rectangle(Pen, Filled, path.First(), path.Last(), Option == "Regularny");
         }
     }
 }
