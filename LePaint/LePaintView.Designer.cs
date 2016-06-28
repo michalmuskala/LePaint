@@ -136,6 +136,7 @@
             this.imageBrush.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageBrush.TabIndex = 13;
             this.imageBrush.TabStop = false;
+            this.imageBrush.Click += new System.EventHandler(this.brush_Click);
             // 
             // elipsisBrush
             // 
