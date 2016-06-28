@@ -44,6 +44,7 @@
             this.zapiszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszJakoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lineBrush = new System.Windows.Forms.PictureBox();
+            this.elipsisBrush = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -52,6 +53,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rubberBrush)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lineBrush)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elipsisBrush)).BeginInit();
             this.SuspendLayout();
             // 
             // colorPicker
@@ -102,6 +104,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.elipsisBrush);
             this.splitContainer1.Panel1.Controls.Add(this.lineBrush);
             this.splitContainer1.Panel1.Controls.Add(this.rectangle);
             this.splitContainer1.Panel1.Controls.Add(this.rubberBrush);
@@ -241,6 +244,18 @@
             this.lineBrush.TabStop = false;
             this.lineBrush.Click += new System.EventHandler(this.brush_Click);
             // 
+            // elipsisBrush
+            // 
+            this.elipsisBrush.Image = global::LePaint.Properties.Resources.Shape_Circle_128;
+            this.elipsisBrush.Location = new System.Drawing.Point(35, 121);
+            this.elipsisBrush.Margin = new System.Windows.Forms.Padding(2);
+            this.elipsisBrush.Name = "elipsisBrush";
+            this.elipsisBrush.Size = new System.Drawing.Size(29, 28);
+            this.elipsisBrush.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.elipsisBrush.TabIndex = 12;
+            this.elipsisBrush.TabStop = false;
+            this.elipsisBrush.Click += new System.EventHandler(this.brush_Click);
+            // 
             // LePaintView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,6 +280,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lineBrush)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.elipsisBrush)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,6 +304,7 @@
         private System.Windows.Forms.PictureBox rubberBrush;
         private System.Windows.Forms.PictureBox rectangle;
         private System.Windows.Forms.PictureBox lineBrush;
+        private System.Windows.Forms.PictureBox elipsisBrush;
     }
 }
 

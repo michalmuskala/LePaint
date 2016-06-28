@@ -5,9 +5,9 @@ namespace LePaint.Objects
 {
     internal class Rectangle : IObject
     {
-        private Pen pen;
-        private System.Drawing.Rectangle rectangle;
-        private bool filled;
+        protected Pen pen;
+        protected System.Drawing.Rectangle rectangle;
+        protected bool filled;
 
         public Rectangle(Pen pen, bool filled, Point point1, Point point2)
         {
@@ -20,7 +20,7 @@ namespace LePaint.Objects
             this.rectangle = new System.Drawing.Rectangle(x, y, width, height);
         }
 
-        public void Draw(Graphics graphics)
+        public virtual void Draw(Graphics graphics)
         {
             if (filled)
                 graphics.FillRectangle(pen.Brush, rectangle);

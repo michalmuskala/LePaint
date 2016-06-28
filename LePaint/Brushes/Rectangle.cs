@@ -14,11 +14,11 @@ namespace LePaint.Brushes
         public bool AffectedByFilled { get { return true; } }
         public IEnumerable<string> Options { get { return new List<string>(); } }
 
-        public bool Filled { set; private get; }
-        public Pen Pen { set; private get; }
-        public string Option { set; private get; }
+        public bool Filled { set; protected get; }
+        public Pen Pen { set; protected get; }
+        public string Option { set; protected get; }
 
-        public IEnumerable<IObject> GenerateObjects(IEnumerable<Point> path)
+        public virtual IEnumerable<IObject> GenerateObjects(IEnumerable<Point> path)
         {
             if (path.Count() != 0)
                 yield return new Objects.Rectangle(Pen, Filled, path.First(), path.Last());

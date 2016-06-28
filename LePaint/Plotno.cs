@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LePaint.Objects;
+using System.Drawing.Drawing2D;
 
 namespace LePaint
 {
@@ -41,6 +42,7 @@ namespace LePaint
             BufferedGraphicsContext currentContext = BufferedGraphicsManager.Current;
             buffer = currentContext.Allocate(CreateGraphics(), DisplayRectangle);
             buffer.Graphics.Clear(Color.White);
+            buffer.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
         }
 
         private void Plotno_MouseDown(object sender, MouseEventArgs e)

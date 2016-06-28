@@ -36,8 +36,7 @@ namespace LePaint.Canvas
             brushes.Add("line", new Brushes.Line());
             brushes.Add("rubber", new Brushes.Rubber());
             brushes.Add("rectangle", new Brushes.Rectangle());
-            // Select default brush
-            currentBrush = brushes["line"];
+            brushes.Add("elipsis", new Brushes.Elipsis());
         }
 
         private void InitializeModel(ICanvas model, Bitmap bmp)

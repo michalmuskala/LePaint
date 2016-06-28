@@ -65,6 +65,7 @@ namespace LePaint
             plotno1.MaximumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
             plotno1.MinimumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
             plotno1.Size = new System.Drawing.Size(canvasWidth, canvasHeight);
+            Load += (sender, args) => OnBrushSelected("line");
         }
         public LePaintView() : this(1200, 650)
         {
