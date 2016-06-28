@@ -33,6 +33,8 @@
             this.colorPicker = new System.Windows.Forms.Label();
             this.penWidth = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.polygonBrush = new System.Windows.Forms.PictureBox();
+            this.options = new System.Windows.Forms.ComboBox();
             this.imageBrush = new System.Windows.Forms.PictureBox();
             this.elipsisBrush = new System.Windows.Forms.PictureBox();
             this.lineBrush = new System.Windows.Forms.PictureBox();
@@ -47,11 +49,11 @@
             this.otwórzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszJakoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.options = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.polygonBrush)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBrush)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.elipsisBrush)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineBrush)).BeginInit();
@@ -109,6 +111,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.polygonBrush);
             this.splitContainer1.Panel1.Controls.Add(this.options);
             this.splitContainer1.Panel1.Controls.Add(this.imageBrush);
             this.splitContainer1.Panel1.Controls.Add(this.elipsisBrush);
@@ -128,6 +131,45 @@
             this.splitContainer1.SplitterDistance = 90;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // polygonBrush
+            // 
+            this.polygonBrush.Image = global::LePaint.Properties.Resources.Free_Hand_Selection_128;
+            this.polygonBrush.Location = new System.Drawing.Point(34, 171);
+            this.polygonBrush.Margin = new System.Windows.Forms.Padding(2);
+            this.polygonBrush.Name = "polygonBrush";
+            this.polygonBrush.Size = new System.Drawing.Size(29, 28);
+            this.polygonBrush.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.polygonBrush.TabIndex = 15;
+            this.polygonBrush.TabStop = false;
+            this.polygonBrush.Click += new System.EventHandler(this.brush_Click);
+            // 
+            // options
+            // 
+            this.options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.options.FormattingEnabled = true;
+            this.options.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.options.Location = new System.Drawing.Point(1, 4);
+            this.options.Margin = new System.Windows.Forms.Padding(2);
+            this.options.Name = "options";
+            this.options.Size = new System.Drawing.Size(87, 21);
+            this.options.TabIndex = 14;
+            this.options.SelectedIndexChanged += new System.EventHandler(this.options_SelectedIndexChanged);
             // 
             // imageBrush
             // 
@@ -276,33 +318,6 @@
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";
             this.zapiszJakoToolStripMenuItem.Click += new System.EventHandler(this.zapiszJakoToolStripMenuItem_Click_1);
             // 
-            // options
-            // 
-            this.options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.options.FormattingEnabled = true;
-            this.options.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"});
-            this.options.Location = new System.Drawing.Point(1, 4);
-            this.options.Margin = new System.Windows.Forms.Padding(2);
-            this.options.Name = "options";
-            this.options.Size = new System.Drawing.Size(87, 21);
-            this.options.TabIndex = 14;
-            this.options.SelectedIndexChanged += new System.EventHandler(this.options_SelectedIndexChanged);
-            // 
             // LePaintView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,6 +337,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.polygonBrush)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageBrush)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.elipsisBrush)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineBrush)).EndInit();
@@ -355,6 +371,7 @@
         private System.Windows.Forms.PictureBox elipsisBrush;
         private System.Windows.Forms.PictureBox imageBrush;
         private System.Windows.Forms.ComboBox options;
+        private System.Windows.Forms.PictureBox polygonBrush;
     }
 }
 

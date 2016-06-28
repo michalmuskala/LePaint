@@ -73,6 +73,16 @@ namespace LePaint.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Free_Hand_Selection_128 {
+            get {
+                object obj = ResourceManager.GetObject("Free-Hand-Selection-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Images_128 {
             get {
                 object obj = ResourceManager.GetObject("Images-128", resourceCulture);
