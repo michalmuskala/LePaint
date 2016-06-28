@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,16 +13,20 @@ namespace LePaint.Files
         private IFileView view;
         private string name;
 
+        private string Name
+        {
+            set { this.name = value; view.Text = value; }
+        }
+
         public FilePresenter(IFileView view, string name)
         {
             this.view = view;
             view.LoadRequested += OnLoadRequested;
             view.SaveRequested += OnSaveRequested;
-            this.name = name;
-            view.Text = name;
+            Name = name;
         }
 
-        public FilePresenter(IFileView view) : this(view, "nowyObraz")
+        public FilePresenter(IFileView view) : this(view, DefaultName())
         {
         }
 
@@ -31,12 +36,15 @@ namespace LePaint.Files
             view.DumpToGraphics(Graphics.FromImage(bitmap));
             if (e.Filename != null)
             {
-                bitmap.Save(e.Filename);
+                Name = e.Filename;
             }
-            else
-            {
-                bitmap.Save(name);
-            }
+            bitmap.Save(name);
+        }
+
+        private static string DefaultName()
+        {
+            var path = Directory.GetCurrentDirectory();
+            return Path.Combine(path, "bezNazwy.bmp");
         }
 
         private void OnLoadRequested(object sender, string e)

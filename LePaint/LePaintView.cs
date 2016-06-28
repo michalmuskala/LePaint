@@ -53,19 +53,17 @@ namespace LePaint
         public event EventHandler<string> LoadRequested;
         public event EventHandler<SaveRequestArgs> SaveRequested;
 
-        private int canvasHeight;
-        private int canvasWidth;
-
         public LePaintView(int canvasWidth, int canvasHeight)
         {
-            this.canvasHeight = canvasHeight;
-            this.canvasWidth = canvasWidth;
             InitializeComponent();
             DoubleBuffered = true;
             plotno1.PathUpdated = OnPathUpdated;
             plotno1.Commit = OnCommit;
+            plotno1.MaximumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
+            plotno1.MinimumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
+            plotno1.Size = new System.Drawing.Size(canvasWidth, canvasHeight);
         }
-        public LePaintView() : this(1600, 1600)
+        public LePaintView() : this(1200, 650)
         {
         }
 
