@@ -58,6 +58,7 @@ namespace LePaint
 
         public LePaintView(int canvasWidth, int canvasHeight)
         {
+
             InitializeComponent();
             DoubleBuffered = true;
             plotno1.PathUpdated = OnPathUpdated;

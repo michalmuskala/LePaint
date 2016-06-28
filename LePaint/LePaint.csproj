@@ -53,6 +53,7 @@
     <Compile Include="Brushes\Line.cs" />
     <Compile Include="Brushes\Rectangle.cs" />
     <Compile Include="Brushes\Rubber.cs" />
+    <Compile Include="Brushes\Spray.cs" />
     <Compile Include="Canvas\Canvas.cs" />
     <Compile Include="Canvas\CanvasPresenter.cs" />
     <Compile Include="Canvas\ICanvas.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Objects\IObject.cs" />
     <Compile Include="Objects\Line.cs" />
     <Compile Include="Objects\Rectangle.cs" />
+    <Compile Include="Objects\Spray.cs" />
     <Compile Include="Plotno.cs">
       <SubType>UserControl</SubType>
     </Compile>
