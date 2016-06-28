@@ -11,7 +11,7 @@ namespace LePaint.Objects
         private readonly Pen pen;
         private readonly GraphicsPath path;
  
-        public Line(Pen pen, IList<Point> points, string option)
+        public Line(Pen pen, IList<Point> points, PathPointType option)
         {
             if (points.Count == 0)
             {
@@ -20,8 +20,7 @@ namespace LePaint.Objects
             else
             {
                 this.pen = pen;
-                var convertedOption = PathPointType.Line; // TODO: convert from option
-                var pointTypes = points.Select(_ => (byte)convertedOption).ToArray();
+                var pointTypes = points.Select(_ => (byte)option).ToArray();
                 this.path = new GraphicsPath(points.ToArray(), pointTypes);
             }
         }

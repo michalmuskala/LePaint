@@ -25,7 +25,19 @@ namespace LePaint
 
         public bool ShowColorAndSizeSelectors 
         {
-            set { /* show/hide selectors */ }
+            set
+            {
+                if (value)
+                {
+                    penWidth.Show();
+                    colorPicker.Show();
+                }
+                else
+                {
+                    colorPicker.Hide();
+                    penWidth.Hide();
+                }
+            }
         }
 
         public bool ShowFilledSelector
@@ -42,7 +54,20 @@ namespace LePaint
         {
             set
             {
-                /* a combobox with those options */
+                options.Items.Clear();
+                foreach (var option in value)
+                {
+                    options.Items.Add(option);
+                }
+                if (value.Count() != 0)
+                {
+                    options.SelectedIndex = 0;
+                    options.Show();
+                }
+                else
+                {
+                    options.Hide();
+                }
             }
         }
 
@@ -68,6 +93,7 @@ namespace LePaint
             plotno1.MaximumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
             plotno1.MinimumSize = new System.Drawing.Size(canvasWidth, canvasHeight);
             plotno1.Size = new System.Drawing.Size(canvasWidth, canvasHeight);
+            penWidth.SelectedIndex = 0;
             Load += (sender, args) => OnBrushSelected("line");
         }
         public LePaintView() : this(1200, 650)
@@ -254,6 +280,20 @@ namespace LePaint
         private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AppStarter.NewWindow();
+        }
+
+        private void options_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OnOptionSelected(options.Text);
+        }
+
+        private void OnOptionSelected(string text)
+        {
+            var handlers = OptionSelected;
+            if (handlers != null)
+            {
+                handlers(this, text);
+            }
         }
     }
 }

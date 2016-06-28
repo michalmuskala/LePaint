@@ -113,6 +113,7 @@ namespace LePaint.Canvas
             view.ShowColorAndSizeSelectors = currentBrush.AffectedByPen;
             view.ShowFilledSelector = currentBrush.AffectedByFilled;
             view.BrushNeedsFile = currentBrush.NeedsFile;
+            view.BrushOptions = currentBrush.Options;
         }
     }
 }

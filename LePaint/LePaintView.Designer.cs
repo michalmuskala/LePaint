@@ -47,6 +47,7 @@
             this.otwórzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszJakoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.options = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,7 +63,7 @@
             // colorPicker
             // 
             this.colorPicker.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.colorPicker.Location = new System.Drawing.Point(2, 41);
+            this.colorPicker.Location = new System.Drawing.Point(1, 59);
             this.colorPicker.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.colorPicker.Name = "colorPicker";
             this.colorPicker.Size = new System.Drawing.Size(15, 16);
@@ -71,6 +72,7 @@
             // 
             // penWidth
             // 
+            this.penWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.penWidth.FormattingEnabled = true;
             this.penWidth.Items.AddRange(new object[] {
             "1",
@@ -88,7 +90,7 @@
             "13",
             "14",
             "15"});
-            this.penWidth.Location = new System.Drawing.Point(2, 11);
+            this.penWidth.Location = new System.Drawing.Point(1, 29);
             this.penWidth.Margin = new System.Windows.Forms.Padding(2);
             this.penWidth.Name = "penWidth";
             this.penWidth.Size = new System.Drawing.Size(52, 21);
@@ -107,6 +109,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.options);
             this.splitContainer1.Panel1.Controls.Add(this.imageBrush);
             this.splitContainer1.Panel1.Controls.Add(this.elipsisBrush);
             this.splitContainer1.Panel1.Controls.Add(this.lineBrush);
@@ -129,7 +132,7 @@
             // imageBrush
             // 
             this.imageBrush.Image = global::LePaint.Properties.Resources.Images_128;
-            this.imageBrush.Location = new System.Drawing.Point(2, 153);
+            this.imageBrush.Location = new System.Drawing.Point(1, 171);
             this.imageBrush.Margin = new System.Windows.Forms.Padding(2);
             this.imageBrush.Name = "imageBrush";
             this.imageBrush.Size = new System.Drawing.Size(29, 28);
@@ -141,7 +144,7 @@
             // elipsisBrush
             // 
             this.elipsisBrush.Image = global::LePaint.Properties.Resources.Shape_Circle_128;
-            this.elipsisBrush.Location = new System.Drawing.Point(35, 121);
+            this.elipsisBrush.Location = new System.Drawing.Point(34, 139);
             this.elipsisBrush.Margin = new System.Windows.Forms.Padding(2);
             this.elipsisBrush.Name = "elipsisBrush";
             this.elipsisBrush.Size = new System.Drawing.Size(29, 28);
@@ -152,8 +155,8 @@
             // 
             // lineBrush
             // 
-            this.lineBrush.Image = ((System.Drawing.Image)(resources.GetObject("lineBrush.Image")));
-            this.lineBrush.Location = new System.Drawing.Point(2, 121);
+            this.lineBrush.Image = global::LePaint.Properties.Resources.Pencil_128;
+            this.lineBrush.Location = new System.Drawing.Point(1, 139);
             this.lineBrush.Margin = new System.Windows.Forms.Padding(2);
             this.lineBrush.Name = "lineBrush";
             this.lineBrush.Size = new System.Drawing.Size(29, 28);
@@ -165,7 +168,7 @@
             // rectangle
             // 
             this.rectangle.Image = ((System.Drawing.Image)(resources.GetObject("rectangle.Image")));
-            this.rectangle.Location = new System.Drawing.Point(35, 89);
+            this.rectangle.Location = new System.Drawing.Point(34, 107);
             this.rectangle.Margin = new System.Windows.Forms.Padding(2);
             this.rectangle.Name = "rectangle";
             this.rectangle.Size = new System.Drawing.Size(29, 28);
@@ -177,7 +180,7 @@
             // rubberBrush
             // 
             this.rubberBrush.Image = ((System.Drawing.Image)(resources.GetObject("rubberBrush.Image")));
-            this.rubberBrush.Location = new System.Drawing.Point(2, 89);
+            this.rubberBrush.Location = new System.Drawing.Point(1, 107);
             this.rubberBrush.Margin = new System.Windows.Forms.Padding(2);
             this.rubberBrush.Name = "rubberBrush";
             this.rubberBrush.Size = new System.Drawing.Size(29, 28);
@@ -189,7 +192,7 @@
             // gumka
             // 
             this.gumka.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gumka.Location = new System.Drawing.Point(22, 41);
+            this.gumka.Location = new System.Drawing.Point(21, 59);
             this.gumka.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.gumka.Name = "gumka";
             this.gumka.Size = new System.Drawing.Size(15, 16);
@@ -199,7 +202,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(2, 68);
+            this.checkBox1.Location = new System.Drawing.Point(1, 86);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(50, 17);
@@ -248,7 +251,7 @@
             // nowyToolStripMenuItem
             // 
             this.nowyToolStripMenuItem.Name = "nowyToolStripMenuItem";
-            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nowyToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.nowyToolStripMenuItem.Text = "Nowy";
             this.nowyToolStripMenuItem.Click += new System.EventHandler(this.nowyToolStripMenuItem_Click);
             // 
@@ -272,6 +275,33 @@
             this.zapiszJakoToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.zapiszJakoToolStripMenuItem.Text = "Zapisz jako";
             this.zapiszJakoToolStripMenuItem.Click += new System.EventHandler(this.zapiszJakoToolStripMenuItem_Click_1);
+            // 
+            // options
+            // 
+            this.options.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.options.FormattingEnabled = true;
+            this.options.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.options.Location = new System.Drawing.Point(1, 4);
+            this.options.Margin = new System.Windows.Forms.Padding(2);
+            this.options.Name = "options";
+            this.options.Size = new System.Drawing.Size(87, 21);
+            this.options.TabIndex = 14;
+            this.options.SelectedIndexChanged += new System.EventHandler(this.options_SelectedIndexChanged);
             // 
             // LePaintView
             // 
@@ -324,6 +354,7 @@
         private System.Windows.Forms.PictureBox lineBrush;
         private System.Windows.Forms.PictureBox elipsisBrush;
         private System.Windows.Forms.PictureBox imageBrush;
+        private System.Windows.Forms.ComboBox options;
     }
 }
 
