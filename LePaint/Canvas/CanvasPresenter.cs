@@ -41,6 +41,8 @@ namespace LePaint.Canvas
             brushes.Add("spray", new Brushes.Spray());
             brushes.Add("image", new Brushes.Image());
             brushes.Add("polygon", new Brushes.Polygon());
+            brushes.Add("gradient", new Brushes.Gradient());
+
         }
 
         private void InitializeModel(ICanvas model, Bitmap bmp)

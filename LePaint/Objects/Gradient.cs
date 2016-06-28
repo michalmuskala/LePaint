@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace LePaint.Objects
 {
-    internal class Spray : IObject
+    class Gradient : IObject
     {
-        protected Pen pen;
+         protected Pen pen;
         private readonly GraphicsPath path;
        
 
-        public Spray(Pen pen, IList<Point> points)
+        public Gradient(Pen pen, IList<Point> points)
         {
             if (points.Count == 0)
             {
@@ -30,8 +30,8 @@ namespace LePaint.Objects
                    
                     if (i % 2 == 0)
                     {
-                        
-                        points[i] = new Point(points[i].X+3,points[i].Y+2);
+
+                        points[i] = Point.Empty;
                     }
                     if (i % 3 == 0)
                     {
@@ -43,9 +43,10 @@ namespace LePaint.Objects
                     }
                     
                 }
-                
+                Point[] tab;
+                tab = points.ToArray();
               
-                    this.path = new GraphicsPath(points.ToArray(), pointTypes);
+                    this.path = new GraphicsPath(tab, pointTypes);
 
             }
         }
