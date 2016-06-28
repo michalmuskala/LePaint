@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace LePaint.Brushes
 {
+    // Interfejs fabryki obiektów o interfejsie IObject wykorzystywany przez
+    // presenter do obsługi różnych opcji, różnych narządzi.
     public interface IBrush
     {
         bool Filled { set; }

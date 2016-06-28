@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace LePaint.Canvas
 {
+    // Interfejs widoku płótna
     public interface ICanvasView
     {
         event EventHandler<IEnumerable<Point>> PathUpdated;

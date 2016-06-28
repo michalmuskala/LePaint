@@ -8,6 +8,7 @@ using LePaint.Brushes;
 
 namespace LePaint.Canvas
 {
+    // Prezenter odpowiedzialny za logikę obsługi rysowania
     public class CanvasPresenter
     {
         ICanvasView view;

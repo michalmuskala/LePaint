@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace LePaint.Files
 {
+    // Prezenter odpowiedzialny za obsługę operacji na plikach
     public class FilePresenter
     {
         private IFileView view;

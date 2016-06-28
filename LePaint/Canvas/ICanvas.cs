@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace LePaint.Canvas
 {
+    // Interfejs modelu płótna
     public interface ICanvas
     {
         IEnumerable<IObject> Objects { get; }

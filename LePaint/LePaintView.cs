@@ -14,10 +14,14 @@ using LePaint.Files;
 
 namespace LePaint
 {
+    // Główna klasa widoku, odpowiedzialna za obługę zdarzeń użytkownika.
     public partial class LePaintView : Form, ICanvasView, IFileView
     {
+        // Formaty obsługiwane przez klasę Image 
         const string Filter = "JPG|*.jpg|PNG|*.png|BMP|*.bmp|GIF|*.gif|TIFF|*.tiff";
 
+        #region interfaceProperties
+        // Obiekty, które powinny zostać wyrenderowane w następnej klatce
         public IEnumerable<IObject> NextObjects
         {
             set { plotno1.NextObjects = value; }
@@ -73,6 +77,8 @@ namespace LePaint
 
         public bool BrushNeedsFile { private get; set; }
 
+        #endregion
+
         public event EventHandler<IEnumerable<Point>> PathUpdated;
         public event EventHandler<string> BrushSelected; // Call when brush selected
         public event EventHandler<Color> SelectedColor;
@@ -86,7 +92,6 @@ namespace LePaint
 
         public LePaintView(int canvasWidth, int canvasHeight)
         {
-
             InitializeComponent();
             DoubleBuffered = true;
             plotno1.PathUpdated = OnPathUpdated;
@@ -100,6 +105,117 @@ namespace LePaint
         public LePaintView() : this(1200, 650)
         {
         }
+
+        #region interfaceMethods
+
+        public void ShowError(string v)
+        {
+            MessageBox.Show(v, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void DumpToGraphics(Graphics graphics)
+        {
+            plotno1.DumpToGraphics(graphics);
+        }
+        #endregion
+
+        #region helperFunctions
+
+        private bool FileRead(out string file)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = Filter;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                file = dialog.FileName;
+                return true;
+            }
+            file = "";
+            return false;
+        }
+        #endregion
+
+        #region callbacks
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OnSelectedSize(Int32.Parse(penWidth.Text));
+            OnCommit();
+        }
+
+        private void colorPicker_Click(object sender, EventArgs e)
+        {
+            ColorDialog dialog = new ColorDialog();
+            dialog.Color = colorPicker.BackColor;
+            dialog.ShowDialog();
+            colorPicker.BackColor = dialog.Color;
+            OnSelectedColor(dialog.Color);
+            OnCommit();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            var checkbox = sender as CheckBox;
+            OnFilledChanged(checkbox.Checked);
+        }
+
+        private void brush_Click(object sender, EventArgs e)
+        {
+            string file;
+            var box = sender as PictureBox;
+            OnBrushSelected(box.Name.Replace("Brush", ""));
+            if (BrushNeedsFile)
+            {
+                if (FileRead(out file))
+                {
+                    OnFileSelected(file);
+                }
+                else
+                {
+                    ShowError("Nie wybrano pliku!");
+                    OnBrushSelected("line");
+                }
+            }
+        }
+
+        private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string file;
+            if (FileRead(out file))
+            {
+                OnLoadRequested(file);
+            }
+        }
+
+        private void zapiszToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OnSaveRequested(null);
+        }
+
+        private void zapiszJakoToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            dialog.AddExtension = true;
+            dialog.DefaultExt = ".bmp";
+            dialog.CreatePrompt = true;
+            dialog.Filter = Filter;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                OnSaveRequested(dialog.FileName);
+            }
+        }
+
+        private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AppStarter.NewWindow();
+        }
+
+        private void options_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OnOptionSelected(options.Text);
+        }
+        #endregion
+
+        #region eventHandlers
 
         private void OnCommit()
         {
@@ -119,16 +235,6 @@ namespace LePaint
             }
         }
 
-        private void colorPicker_Click(object sender, EventArgs e)
-        {
-            ColorDialog dialog = new ColorDialog();
-            dialog.Color = colorPicker.BackColor;
-            dialog.ShowDialog();
-            colorPicker.BackColor = dialog.Color;
-            OnSelectedColor(dialog.Color);
-            OnCommit();
-        }
-
         private void OnSelectedColor(Color color)
         {
             var handlers = SelectedColor;
@@ -136,12 +242,6 @@ namespace LePaint
             {
                 handlers(this, color);
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            OnSelectedSize(Int32.Parse(penWidth.Text));
-            OnCommit();
         }
 
         private void OnSelectedSize(int v)
@@ -153,42 +253,12 @@ namespace LePaint
             }
         }
 
-        public void DumpToGraphics(Graphics graphics)
-        {
-            plotno1.DumpToGraphics(graphics);
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            var checkbox = sender as CheckBox;
-            OnFilledChanged(checkbox.Checked);
-        }
-
         private void OnFilledChanged(bool v)
         {
             var handlers = FilledChanged;
             if (handlers != null)
             {
                 handlers(this, v);
-            }
-        }
-
-        private void brush_Click(object sender, EventArgs e)
-        {
-            string file;
-            var box = sender as PictureBox;
-            OnBrushSelected(box.Name.Replace("Brush", ""));
-            if (BrushNeedsFile)
-            {
-                if (FileRead(out file))
-                {
-                    OnFileSelected(file);
-                }
-                else
-                {
-                    ShowError("Nie wybrano pliku!");
-                    OnBrushSelected("line");
-                }
             }
         }
 
@@ -224,28 +294,6 @@ namespace LePaint
             }
         }
 
-        private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string file;
-            if (FileRead(out file))
-            {
-                OnLoadRequested(file);
-            }
-        }
-
-        private bool FileRead(out string file)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = Filter;
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                file = dialog.FileName;
-                return true;
-            }
-            file = "";
-            return false;
-        }
-
         private void OnLoadRequested(string safeFileName)
         {
             var handlers = LoadRequested;
@@ -253,39 +301,6 @@ namespace LePaint
             {
                 handlers(this, safeFileName);
             }
-        }
-
-        private void zapiszToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OnSaveRequested(null);
-        }
-
-        public void ShowError(string v)
-        {
-            MessageBox.Show(v, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void zapiszJakoToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            var dialog = new SaveFileDialog();
-            dialog.AddExtension = true;
-            dialog.DefaultExt = ".bmp";
-            dialog.CreatePrompt = true;
-            dialog.Filter = Filter;
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                OnSaveRequested(dialog.FileName);
-            }
-        }
-
-        private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AppStarter.NewWindow();
-        }
-
-        private void options_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            OnOptionSelected(options.Text);
         }
 
         private void OnOptionSelected(string text)
@@ -296,5 +311,6 @@ namespace LePaint
                 handlers(this, text);
             }
         }
+        #endregion
     }
 }

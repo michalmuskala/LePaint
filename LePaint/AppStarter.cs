@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace LePaint
 {
+    // Klasa statyczna odpowiedzialna za otwieranie okien aplikacji
     public static class AppStarter
     {
         public static void InitialWindow()

@@ -14,6 +14,7 @@ namespace LePaint.Files
         public int Height;
     }
 
+    // Interfejs widoku odpowiedzialnego za ogsługę operacji na plikach
     public interface IFileView
     {
         string Text { set; }

@@ -9,6 +9,7 @@ using LePaint.Objects;
 
 namespace LePaint.Canvas
 {
+    // Model półtna
     class Canvas : ICanvas
     {
         private IEnumerable<IObject> temporaryObjects = new List<IObject>(); //tymczasowo rysowane

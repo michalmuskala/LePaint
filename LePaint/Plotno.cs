@@ -12,8 +12,10 @@ using System.Drawing.Drawing2D;
 
 namespace LePaint
 {
+    // Komponent odpowiedzialny za wyświetlanie i obsługę pola rysowania
     public partial class Plotno : UserControl
     {
+        // Co ile ruchów myszki odrysowanie kształtów
         private const int throtlingFactor = 5;
 
         private IList<Point> path = new List<Point>();
@@ -44,6 +46,8 @@ namespace LePaint
             buffer.Graphics.Clear(Color.White);
             buffer.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
         }
+
+        #region callbacks
 
         private void Plotno_MouseDown(object sender, MouseEventArgs e)
         {
@@ -77,6 +81,13 @@ namespace LePaint
             }
         }
 
+        private void Plotno_Paint(object sender, PaintEventArgs e)
+        {
+            buffer.Render(e.Graphics);
+        }
+
+        #endregion
+
         private void RefreshBuffer(IList<Point> path, bool commit = false)
         {
             PathUpdated(path);
@@ -93,11 +104,6 @@ namespace LePaint
             {
                 ob.Draw(buffer.Graphics);
             }
-        }
-
-        private void Plotno_Paint(object sender, PaintEventArgs e)
-        {
-            buffer.Render(e.Graphics);
         }
 
         internal void DumpToGraphics(Graphics graphics)
