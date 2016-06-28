@@ -214,9 +214,9 @@ namespace LePaint
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void nowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AppStarter.NewWindow();
         }
     }
 }

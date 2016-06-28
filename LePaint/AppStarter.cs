@@ -14,11 +14,22 @@ namespace LePaint
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(EmptyWindow());
+        }
+
+        public static void NewWindow()
+        {
+            var view = EmptyWindow();
+            view.Show();
+        }
+
+        private static LePaintView EmptyWindow()
+        {
             var view = new LePaintView();
             var model = new Canvas.Canvas();
             var canvasPresenter = new Canvas.CanvasPresenter(view, model);
             var filePresenter = new Files.FilePresenter(view);
-            Application.Run(view);
+            return view;
         }
 
         public static void BitmapWindow(string imageName)
